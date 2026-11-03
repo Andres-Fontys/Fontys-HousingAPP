@@ -1,3 +1,9 @@
-from flask import Blueprint
+from app.auth import auth
 
-auth = Blueprint('auth', __name__)
+@auth.route('/login')
+def login():
+    return "Login page"
+
+@auth.route('/register')
+def register():
+    return "Register page"
