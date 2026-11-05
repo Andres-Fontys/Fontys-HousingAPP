@@ -8,6 +8,7 @@ def create_app():
 
     # We are working with blueprints this part conect everything.
     from app.auth.routes import auth
-    app.register_blueprint(auth, url_prefix='/auth')
+    
+    app.register_blueprint(auth)
 
     return app
