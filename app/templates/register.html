@@ -1,34 +1,21 @@
 {% extends 'base.html' %}
  
 {% block content %}
-<h1>Login</h1>
+<h1>Register</h1>
 
-<form method="POST" action="{{ url_for('auth.register') }}">
+ <form method="POST">
+    {{ form.hidden_tag() }}
 
-    <div>
-        <label for="username">Username</label>
-        <input 
-            type="text" 
-            id="username" 
-            name="username" 
-            placeholder="Enter your username"
-            required
-        >
-    </div>
+    {{ form.username.label }}
+    {{ form.username(class="form-control") }}
 
-    <div>
-        <label for="password">Password</label>
-        <input 
-            type="password" 
-            id="password" 
-            name="password" 
-            placeholder="Enter your password"
-            required
-        >
-    </div>
+    {{ form.email.label }}
+    {{ form.email(class="form-control") }}
 
-    <button type="submit">Register</button>
+    {{ form.password.label }}
+    {{ form.password(class="form-control") }}
 
+    {{ form.submit(class="btn btn-primary") }}
 </form>
 
 <p>Already have an account? 
