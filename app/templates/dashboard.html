@@ -1,8 +1,147 @@
-{% extends 'base.html' %}
+
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard | RoomSync
+{% endblock %}
 
 {% block content %}
 
-<h1>Dashboard</h1>
-    
+<div class="dashboard">
+
+    <!-- Welcome Section -->
+    <section class="dashboard-hero">
+        <div class="hero-text">
+            <span class="eyebrow">SMART STUDENT LIVING</span>
+
+            <h1>Welcome to RoomSync 👋</h1>
+
+            <p>
+                Your shared home, organized in one place.
+                Manage reservations, chores and communication
+                with your roommates.
+            </p>
+
+            <a href="#features" class="primary-btn">
+                Explore Features
+            </a>
+        </div>
+
+        <div class="hero-icon" aria-hidden="true">
+            🏠
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="dashboard-section">
+        <div class="section-heading">
+            <div>
+                <h2>Your Overview</h2>
+                <p>A quick look at your shared living space.</p>
+            </div>
+            <span class="demo-badge">Demo Preview</span>
+        </div>
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+                <div class="stat-icon purple">🏠</div>
+                <span class="stat-label">My Home</span>
+                <h3>Not joined</h3>
+                <p>Connect to your student house</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon blue">📅</div>
+                <span class="stat-label">Reservations</span>
+                <h3>0</h3>
+                <p>No upcoming bookings</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon orange">✅</div>
+                <span class="stat-label">My Tasks</span>
+                <h3>0</h3>
+                <p>No tasks assigned</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon green">💬</div>
+                <span class="stat-label">Messages</span>
+                <h3>0</h3>
+                <p>No new messages</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="dashboard-section" id="features">
+
+        <div class="section-heading">
+            <div>
+                <h2>Manage Your Home</h2>
+                <p>Everything you need for shared student living.</p>
+            </div>
+        </div>
+
+        <div class="features-grid">
+
+            <article class="feature-card">
+                <div class="feature-icon purple">🏡</div>
+                <h3>My Home</h3>
+                <p>
+                    View your house information,
+                    roommates and shared facilities.
+                </p>
+                <span class="feature-status">Coming soon</span>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon blue">📆</div>
+                <h3>Facility Reservations</h3>
+                <p>
+                    Reserve shared spaces such as the
+                    kitchen, bathroom and laundry room.
+                </p>
+                <span class="feature-status">Coming soon</span>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon orange">🧹</div>
+                <h3>Household Tasks</h3>
+                <p>
+                    Organize cleaning schedules and
+                    divide chores between roommates.
+                </p>
+                <span class="feature-status">Coming soon</span>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon green">💬</div>
+                <h3>Communication</h3>
+                <p>
+                    Keep everyone updated with
+                    house announcements and messages.
+                </p>
+                <span class="feature-status">Coming soon</span>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- Activity -->
+    <section class="dashboard-section">
+        <div class="activity-card">
+            <div class="activity-icon">✨</div>
+            <h3>You're all caught up!</h3>
+            <p>
+                Your recent house activity will appear
+                here when these features are connected.
+            </p>
+        </div>
+    </section>
+
+</div>
+
 {% endblock %}
-    
