@@ -1,14 +1,30 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>{% block title %}RoomSync{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-    {% block content %}
-    {% endblock %}
-    
+    {% include 'navbar.html' %}
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 RoomSync</p>
+        <p>Share a Home. Simplify Life.</p>
+        <a href="mailto:YOUR_EMAIL@example.com">
+            Contact RoomSync
+        </a>
+    </footer>
+
 </body>
 </html>
