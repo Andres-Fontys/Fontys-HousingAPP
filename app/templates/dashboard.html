@@ -1,8 +1,89 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+
+{% block title %}Home | RoomSync{% endblock %}
 
 {% block content %}
+<section class="greeting">
+    <div>
+        <p class="eyebrow">Today</p>
+        <h1>Good to see you, {{ current_user.username }}.</h1>
+        <p>Here is what is happening at home.</p>
+    </div>
+    <a href="#" class="primary-btn">Log an absence</a>
+</section>
+{% set rooms = ["Room 1", "Room 2", "Room 3", "Room 4", "Room 5", "Room 6"] %}
+{% set spaces = [("Kitchen", "tint-coral"), ("Living room", "tint-green"), ("Laundry room", "tint-purple")] %}
 
-<h1>Dashboard</h1>
-    
+<section class="card">
+    <p class="eyebrow">Interactive map</p>
+    <h2>Your residence</h2>
+
+    <div class="floorplan">
+        {% for room in rooms %}
+        <div class="space space--private">
+            <span class="space-type">Private</span>
+            <h3>{{ room }}</h3>
+            <p>Available</p>
+        </div>
+        {% endfor %}
+
+        {% for name, tint in spaces %}
+        <a href="#" class="space space--shared {{ tint }}">
+            <span class="space-type">Shared space</span>
+            <h3>{{ name }}</h3>
+            <p>Reserve a time →</p>
+        </a>
+        {% endfor %}
+    </div>
+
+    <p class="hint"><strong>Shared spaces</strong> can be reserved. <strong>Bedrooms</strong> can be used for maintenance requests or private concerns.</p>
+</section>
+
+{% set reservations = [] %}
+{% set requests = [] %}
+
+<div class="two-col">
+    <section class="card">
+        <p class="eyebrow">House calendar</p>
+        <h2>Coming up</h2>
+
+        {% if reservations %}
+        <ul class="item-list">
+            {% for r in reservations %}
+            <li class="item">
+                <strong>{{ r.space }}</strong>
+                <span>{{ r.when }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">No reservations yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="card card--dark">
+        <p class="eyebrow">My requests</p>
+        <h2>Maintenance</h2>
+
+        {% if requests %}
+        <ul class="item-list">
+            {% for r in requests %}
+            <li class="item">
+                <strong>{{ r.title }}</strong>
+                <span class="badge">{{ r.status }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty">You have no open requests.</p>
+        {% endif %}
+
+        <a href="#" class="light-btn">New request</a>
+    </section>
+</div>
+
+<section class="card">
+    <h3>Need urgent help?</h3>
+    <p class="hint">For danger, fire, or a medical emergency, contact local emergency services first.</p>
+</section>
 {% endblock %}
-    
