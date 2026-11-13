@@ -1,0 +1,18 @@
+<header class="navbar">
+    <a href="/dashboard" class="navbar-brand">
+        <span class="navbar-logo">RS</span>
+        <span>RoomSync</span>
+    </a>
+
+    {% if current_user.is_authenticated %}
+    <nav class="navbar-links">
+        <a href="/dashboard" class="navbar-link">House</a>
+        <a href="#" class="navbar-link">Calendar</a>
+    </nav>
+
+    <div class="navbar-user">
+        <span>{{ current_user.username }}</span>
+        <a href="/logout" class="navbar-signout">Sign out</a>
+    </div>
+    {% endif %}
+</header>
