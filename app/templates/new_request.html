@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}New request | RoomSync{% endblock %}
+
+{% block content %}
+<section class="card">
+    <p class="eyebrow">Maintenance</p>
+    <h2>New request</h2>
+    <p class="hint">Describe the problem and we will pass it on to your landlord.</p>
+
+    <form method="post" class="request-form">
+        <label>Name of the issue
+            <input type="text" name="title" maxlength="80"
+                   placeholder="e.g. Leaking tap, broken lamp" required>
+        </label>
+
+        <label>Location
+            <input type="text" name="location" maxlength="50"
+                   placeholder="e.g. Room 3, kitchen, hallway" required>
+        </label>
+
+        <label>Category
+            <select name="category" id="category" required>
+                <option value="" disabled selected>Choose a category</option>
+                <option>Plumbing</option>
+                <option>Electricity</option>
+                <option>Heating</option>
+                <option>Furniture</option>
+                <option>Other</option>
+            </select>
+        </label>
+
+        <label id="category-other-label" hidden>Describe the category
+            <input type="text" name="category_other" id="category-other" maxlength="30"
+                   placeholder="e.g. Windows, pests, internet">
+        </label>
+
+        <label>Urgency
+            <select name="urgency">
+                <option value="low">Low</option>
+                <option value="normal" selected>Normal</option>
+                <option value="urgent">Urgent</option>
+            </select>
+        </label>
+
+        <label>What is wrong?
+            <textarea name="description" rows="5" maxlength="1000" required></textarea>
+        </label>
+
+        <div class="form-actions">
+            <button type="submit" class="primary-btn">Submit request</button>
+            <a href="{{ url_for('dashboard.index') }}" class="cancel-link">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/new_request.js') }}"></script>
+{% endblock %}
