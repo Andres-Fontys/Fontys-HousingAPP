@@ -4,6 +4,7 @@
     --cream: #faf8f4;
     --text: #1b2a4a;
     --muted: #5f6b83;
+    --lightgray: #EEECE6;
     --radius-md: 18px;
 }
 
@@ -158,6 +159,7 @@ body {
 .tint-purple { background: #e6e2f3; }
 
 .hint { margin: 16px 0 0; color: var(--muted); font-size: 14px; }
+.hint-centered { margin: 16px 0 0; color: var(--muted); font-size: 14px; text-align: center;}
 
 @media (max-width: 600px) {
     .floorplan { grid-template-columns: repeat(2, 1fr); }
@@ -232,6 +234,61 @@ body {
     border-radius: 12px;
     font-weight: 700;
     text-decoration: none;
+}
+
+.tabholder-lightgray {
+    display: flex;
+    padding: 10px;
+    gap: 5px;
+    background: var(--lightgray);
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(16, 35, 74, 0.05);
+}
+
+.tab-active {
+    flex:1;
+    padding: 12px 20px;
+    background: #fff;
+    color: var(--navy);
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+}
+
+.tab-inactive {
+    flex:1;
+    padding: 12px 20px;
+    background: var(--lightgray);
+    color: var(--muted);
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+}
+
+.bright-btn {
+    display:flex;
+    padding: 12px 20px;
+    background: var(--coral);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(229, 105, 79, 1);
+}
+
+.inputfield-light {
+    width:100%;
+    margin: 0;
+    padding: 22px;
+    background: #fff;
+    border-width: 1px;
+    border-color: var(--muted);
+    border-radius: 16px;
+    color: var(--text);
 }
 
 @media (max-width: 700px) {
