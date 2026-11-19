@@ -294,3 +294,18 @@ body {
 @media (max-width: 700px) {
     .two-col { grid-template-columns: 1fr; }
 }
+
+.bright-btn {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bright-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.bright-btn:active {
+    transform: scale(0.96);
+    filter: brightness(0.9);
+}

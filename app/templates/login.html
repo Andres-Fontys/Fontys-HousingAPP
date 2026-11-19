@@ -9,29 +9,28 @@
 <p>Sign in to see what's happening at home.</p>
 <section class="tabholder-lightgray">
     <a href="#" class="tab-active">Sign in</a>
-    <a href="dashboard.html" class="tab-inactive">Create an account</a>
+    <a href="register" class="tab-inactive">Create an account</a>
 </section>
 
-<form method="POST">
+<form method="POST" action="{{ url_for('auth.login') }}">
 
-    <section class="space">
+    <section class="space" >
     {{ form.hidden_tag() }}
     <div>
         <h3>Username</h3>
         {{ form.username(class="inputfield-light", placeholder="Your name")}}
     </div>
 
-    <div>
-        <h3>Email Address</h3>
-        {{ form.email(class="inputfield-light", placeholder="youremail@example.com") }}
-    </div>
 
     <div>
         <h3>Password</h3>
         {{ form.password(class="inputfield-light", placeholder="Your password") }}
     </div>
+    
     {{ form.submit(class="bright-btn") }}
+    
     </section>
+
 </form>
 
     <p class="hint-centered">Remember, private requests and reports are visible only to you and the landlord!</p>
