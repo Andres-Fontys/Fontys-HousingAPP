@@ -35,7 +35,7 @@ def login():
         print("Login validation errors:", form.errors)
 
     if form.validate_on_submit():
-        identifier = form.username_or_email.data.strip()
+        identifier = form.username.data.strip()
 
         # Find user by username OR email
         user = User.query.filter(

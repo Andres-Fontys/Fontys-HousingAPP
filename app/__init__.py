@@ -1,6 +1,5 @@
 
 import os
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -20,10 +19,12 @@ def create_app():
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
     if not app.config['SECRET_KEY']:
-        raise RuntimeError(
-            "SECRET_KEY is missing. Set it in your terminal."
-        )
-
+        if os.environ.get('FLASK_ENV') == 'production':
+            raise RuntimeError(
+                "SECRET_KEY is missing. Set it in your terminal."
+            )
+        app.config['SECRET_KEY'] = "dev-secret-key-change-in-production"
+        
     # Database configuration
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
