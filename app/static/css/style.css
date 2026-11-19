@@ -300,3 +300,21 @@ body {
 }
 
 .cancel-link:hover { color: var(--navy); }
+
+.item-link {
+    color: inherit;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.item-link:hover { text-decoration: underline; }
+
+.detail-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px 24px;
+    margin: 20px 0 24px;
+}
+
+.detail-list dt { font-weight: 700; color: var(--muted); }
+.detail-list dd { margin: 0; white-space: pre-wrap; }

@@ -40,7 +40,6 @@
 </section>
 
 {% set reservations = [] %}
-{% set requests = [] %}
 
 <div class="two-col">
     <section class="card">
@@ -69,8 +68,8 @@
         <ul class="item-list">
             {% for r in requests %}
             <li class="item">
-                <strong>{{ r.title }}</strong>
-                <span class="badge">{{ r.status }}</span>
+                <a href="{{ url_for('dashboard.request_detail', request_id=r.id) }}" class="item-link">{{ r.title }}</a>
+                <span class="badge">{{ r.status_label }}</span>
             </li>
             {% endfor %}
         </ul>
