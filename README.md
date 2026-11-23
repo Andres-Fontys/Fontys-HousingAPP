@@ -141,7 +141,7 @@ Follow these steps to run HouseAPP locally.
 
 Make sure you have installed:
 
-- Python 3.x
+- Python 3.14.7
 - Git
 
 ### 1. Clone the repository
