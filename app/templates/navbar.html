@@ -1,3 +1,4 @@
+
 <header class="navbar">
     <a href="/dashboard" class="navbar-brand">
         <span class="navbar-logo">RS</span>
@@ -12,7 +13,20 @@
 
     <div class="navbar-user">
         <span>{{ current_user.username }}</span>
-        <a href="{{ url_for('auth.logout') }}"  class="navbar-signout">Sign out</a>
+
+        <!-- Secure logout using POST and CSRF -->
+        <form method="POST"
+              action="{{ url_for('auth.logout') }}"
+              class="logout-form">
+
+            <input type="hidden"
+                   name="csrf_token"
+                   value="{{ csrf_token() }}">
+
+            <button type="submit" class="navbar-signout">
+                Sign out
+            </button>
+        </form>
     </div>
     {% endif %}
 </header>

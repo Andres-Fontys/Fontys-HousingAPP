@@ -1,11 +1,12 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import current_user
+from flask_login import current_user, login_required
 from app import db
 from app.models import MaintenanceRequest
 from app.dashboard import dashboard
 
 
 @dashboard.route('/dashboard')
+@login_required
 def index():
     requests = MaintenanceRequest.query.order_by(MaintenanceRequest.created_at.desc()).all()
     return render_template('dashboard.html', requests=requests)
