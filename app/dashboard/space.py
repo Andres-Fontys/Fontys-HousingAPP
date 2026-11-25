@@ -1,10 +1,9 @@
-from flask import url_for , redirect
+
+from flask import url_for, redirect
 from app.dashboard import dashboard
-from flask_wtf import FlaskForm
 from app.dashboard.forms import SpaceForm
 
 spaces = []
-
 tints = ["blue", "green", "yellow", "purple"]
 
 
@@ -14,9 +13,14 @@ def addSpace():
 
     if form.validate_on_submit():
         spaceName = form.space_name.data
-        
+        spaceType = form.space_type.data
+
         spaceColor = tints[len(spaces) % len(tints)]
 
-        spaces.append((spaceName, spaceColor))
+        spaces.append({
+            "name": spaceName,
+            "color": spaceColor,
+            "type": spaceType
+        })
 
     return redirect(url_for('dashboard.index'))
