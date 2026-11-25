@@ -1,0 +1,10 @@
+
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
+from app.models import User
+
+class SpaceForm(FlaskForm):
+    space_name = StringField('Space name', validators=[DataRequired()])
+    submit = SubmitField('Add Room')

@@ -309,3 +309,58 @@ body {
     transform: scale(0.96);
     filter: brightness(0.9);
 }
+
+.tint-blue {
+    background-color: #5991db;
+}
+
+.tint-green {
+    background-color: #1a7e3d;
+}
+
+.tint-yellow {
+    background-color: #ceaf35;
+}
+
+.tint-purple {
+    background-color: #f3e8ff;
+}
+
+.space--add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+}
+
+.space--add button {
+    cursor: pointer;
+    font: inherit;
+}
+
+#add-room-form {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.space {
+    overflow: hidden;
+    border-radius: 14px;
+    transition: transform 0.2s ease;
+}
+
+.space:hover {
+    transform: translateY(-3px);
+}
+
+.space--add {
+    background: #b2ceea;
+    border: 2px dashed #52a0ff !important;
+}
+
+.space--add button {
+    background: #52a0ff ;
+}
