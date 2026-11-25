@@ -1,6 +1,7 @@
 
 import os
-from flask import Flask, render_template
+from urllib import request, response
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
@@ -72,5 +73,11 @@ def create_app():
     @app.errorhandler(429)
     def rate_limit_exceeded(error):
         return render_template('429.html'), 429
+
+    @app.after_request
+    def prevent_sensitive_page_caching(response):
+        if request.path.startswith(('/dashboard', '/maintenance')):
+            response.headers['Cache-Control'] = 'no-store'
+        return response
 
     return app
