@@ -1,10 +1,12 @@
 
 
+import app
 from flask import render_template, url_for, redirect, flash
 from app.auth import auth
 from app import db
 from app.models import User
 from app.auth.forms import RegisterForm, LoginForm
+from app import limiter
 
 from flask_login import login_user, logout_user, login_required
 
@@ -27,15 +29,12 @@ def home():
 
 
 @auth.route('/login', methods=['GET', 'POST'])
+@app.limiter.limit("5 per minute")
 def login():
     form = LoginForm()
 
-    # TEMPORARY: Check form validation
-    if form.is_submitted() and not form.validate():
-        print("Login validation errors:", form.errors)
-
     if form.validate_on_submit():
-        identifier = form.username.data.strip()
+        identifier = form.username_or_email.data.strip()
 
         # Find user by username OR email
         user = User.query.filter(
@@ -98,15 +97,9 @@ def register():
     return render_template('register.html', form=form)
 
 
-# LOGOUT - End user session
 @auth.route('/logout', methods=['POST'])
 @login_required
 def logout():
     logout_user()
-
-    flash(
-        "You have successfully logged out.",
-        "success"
-    )
-
+    flash("You have successfully logged out.", "success")
     return redirect(url_for('auth.login'))
