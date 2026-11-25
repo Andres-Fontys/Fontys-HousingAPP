@@ -4,6 +4,7 @@ from flask_login import current_user, login_required
 from app import db
 from app.models import MaintenanceRequest
 from app.dashboard import dashboard
+from app.dashboard.space import SpaceForm , spaces
 
 
 @dashboard.route('/dashboard')
@@ -15,7 +16,7 @@ def index():
         .order_by(MaintenanceRequest.created_at.desc())
         .all()
     )
-    return render_template('dashboard.html', requests=requests)
+    return render_template('dashboard.html', requests=requests,  form=SpaceForm() , spaces=spaces)
 
 
 @dashboard.route('/maintenance/new', methods=['GET', 'POST'])

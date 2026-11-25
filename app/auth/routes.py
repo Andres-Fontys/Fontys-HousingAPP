@@ -1,15 +1,10 @@
-
-
-import app
 from flask import render_template, url_for, redirect, flash
 from app.auth import auth
 from app import db
 from app.models import User
 from app.auth.forms import RegisterForm, LoginForm
 from app import limiter
-
 from flask_login import login_user, logout_user, login_required
-
 from werkzeug.security import (
     check_password_hash,
     generate_password_hash
@@ -29,7 +24,7 @@ def home():
 
 
 @auth.route('/login', methods=['GET', 'POST'])
-@app.limiter.limit("5 per minute")
+@limiter.limit("5 per minute")
 def login():
     form = LoginForm()
 

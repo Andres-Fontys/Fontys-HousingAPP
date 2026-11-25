@@ -11,33 +11,85 @@
     </div>
     <a href="#" class="primary-btn">Log an absence</a>
 </section>
-{% set rooms = ["Room 1", "Room 2", "Room 3", "Room 4", "Room 5", "Room 6"] %}
-{% set spaces = [("Kitchen", "tint-coral"), ("Living room", "tint-green"), ("Laundry room", "tint-purple")] %}
 
-<section class="card">
+
+
+<section class="card shadow-sm border-0 p-3">
     <p class="eyebrow">Interactive map</p>
     <h2>Your residence</h2>
 
-    <div class="floorplan">
-        {% for room in rooms %}
-        <div class="space space--private">
-            <span class="space-type">Private</span>
-            <h3>{{ room }}</h3>
-            <p>Available</p>
-        </div>
-        {% endfor %}
+<div class="floorplan">
 
-        {% for name, tint in spaces %}
-        <a href="#" class="space space--shared {{ tint }}">
-            <span class="space-type">Shared space</span>
-            <h3>{{ name }}</h3>
-            <p>Reserve a time →</p>
-        </a>
-        {% endfor %}
+    {% for space in spaces %}
+
+        <div class="space tint-{{ space.color }}">
+
+            <div class="space-content">
+
+                {% if space.type == "room" %}
+                    <i class="bi bi-door-closed space-icon"></i>
+                {% else %}
+                    <i class="bi bi-people space-icon"></i>
+                {% endif %}
+
+                <h5 class="space-title">{{ space.name }}</h5>
+
+                <span class="space-label">
+                    {{ space.type.replace("_", " ") | title }}
+                </span>
+
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+
+    <!-- Add Space Card -->
+
+    <div class="space space--add" id="add-room-card">
+
+        <button type="button"
+                class="add-space-button"
+                id="show-room-form">
+
+            <i class="bi bi-plus-circle"></i>
+            <span>Add space</span>
+
+        </button>
+
+        <form id="add-room-form"
+              action="{{ url_for('dashboard.addSpace') }}"
+              method="POST"
+              style="display: none;">
+
+            {{ form.hidden_tag() }}
+
+            {{ form.space_name(
+                class="form-control mb-2",
+                placeholder="Space name"
+            ) }}
+
+            {{ form.space_type(class="form-select mb-2") }}
+
+            <button type="submit"
+                    class="btn btn-primary btn-sm w-100">
+                Create
+            </button>
+
+        </form>
+
     </div>
 
-    <p class="hint"><strong>Shared spaces</strong> can be reserved. <strong>Bedrooms</strong> can be used for maintenance requests or private concerns.</p>
+</div>
+
+
+    <p class="hint mt-3">
+        <strong>Shared spaces</strong> can be reserved.
+        <strong>Bedrooms</strong> can be used for maintenance requests or private concerns.
+    </p>
 </section>
+
 
 {% set reservations = [] %}
 
@@ -85,4 +137,20 @@
     <h3>Need urgent help?</h3>
     <p class="hint">For danger, fire, or a medical emergency, contact local emergency services first.</p>
 </section>
+
+<script>
+    const button = document.getElementById('show-room-form');
+
+    console.log("Button found:", button);
+
+    button.addEventListener('click', function() {
+        console.log("Button clicked!");
+
+        this.style.display = 'none';
+
+        document.getElementById('add-room-form').style.display = 'flex';
+    });
+</script>
+
 {% endblock %}
+
