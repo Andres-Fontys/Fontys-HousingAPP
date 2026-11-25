@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ r.title }} | RoomSync{% endblock %}
+
+{% block content %}
+<section class="card">
+    <p class="eyebrow">Maintenance request</p>
+    <h2>{{ r.title }}</h2>
+    <span class="badge">{{ r.status_label }}</span>
+
+    <dl class="detail-list">
+        <dt>Location</dt><dd>{{ r.location }}</dd>
+        <dt>Category</dt><dd>{{ r.category }}</dd>
+        <dt>Urgency</dt><dd>{{ r.urgency|capitalize }}</dd>
+        <dt>Submitted</dt><dd>{{ r.created_at.strftime('%d %b %Y, %H:%M') }}</dd>
+        <dt>Description</dt><dd>{{ r.description }}</dd>
+    </dl>
+
+    <a href="{{ url_for('dashboard.index') }}" class="cancel-link">← Back to dashboard</a>
+</section>
+{% endblock %}

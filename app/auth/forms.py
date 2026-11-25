@@ -66,26 +66,17 @@ class RegisterForm(FlaskForm):
 
 # LOGIN FORM
 
+
 class LoginForm(FlaskForm):
 
-    username = StringField(
+    username_or_email = StringField(
         'Username or Email',
-        validators=[
-            DataRequired()
-        ]
+        validators=[DataRequired()]
     )
-    email = StringField(
-            'Email',
-            validators=[
-                
-            ]
-        )
 
     password = PasswordField(
         'Password',
-        validators=[
-            DataRequired()
-        ]
+        validators=[DataRequired()]
     )
 
     submit = SubmitField('Login')
