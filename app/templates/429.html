@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Too Many Requests | RoomSync{% endblock %}
+
+{% block content %}
+<section class="card" style="max-width: 500px; margin: 60px auto; text-align: center; padding: 35px;">
+
+    <p class="eyebrow">ROOMSYNC SECURITY</p>
+
+    <h1>Too Many Login Attempts</h1>
+
+    <p>
+        For your security, login attempts have been
+        temporarily limited.
+    </p>
+
+    <p>
+        Please wait a minute before trying again.
+    </p>
+
+    <p class="hint">Error 429 — Too Many Requests</p>
+
+</section>
+{% endblock %}

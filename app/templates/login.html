@@ -1,37 +1,49 @@
 
+
 {% extends 'base.html' %}
 
 {% block content %}
 
-
 <p class="eyebrow">WELCOME HOME</p>
 <h1>Your house, in sync.</h1>
 <p>Sign in to see what's happening at home.</p>
+
 <section class="tabholder-lightgray">
     <a href="#" class="tab-active">Sign in</a>
-    <a href="register" class="tab-inactive">Create an account</a>
+    <a href="{{ url_for('auth.register') }}" class="tab-inactive">
+        Create an account
+    </a>
 </section>
 
 <form method="POST" action="{{ url_for('auth.login') }}">
 
-    <section class="space" >
-    {{ form.hidden_tag() }}
-    <div>
-        <h3>Username</h3>
-        {{ form.username(class="inputfield-light", placeholder="Your name")}}
-    </div>
+    <section class="space">
+        {{ form.hidden_tag() }}
 
+        <div>
+            <h3>Username or Email</h3>
+            {{ form.username_or_email(
+                class="inputfield-light",
+                placeholder="Your username or email"
+            ) }}
+        </div>
 
-    <div>
-        <h3>Password</h3>
-        {{ form.password(class="inputfield-light", placeholder="Your password") }}
-    </div>
-    
-    {{ form.submit(class="bright-btn") }}
-    
+        <div>
+            <h3>Password</h3>
+            {{ form.password(
+                class="inputfield-light",
+                placeholder="Your password"
+            ) }}
+        </div>
+
+        {{ form.submit(class="bright-btn") }}
+
     </section>
 
 </form>
 
-    <p class="hint-centered">Remember, private requests and reports are visible only to you and the landlord!</p>
+<p class="hint-centered">
+    Remember, private requests and reports are visible only to you and the landlord!
+</p>
+
 {% endblock %}
